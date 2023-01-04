@@ -4,32 +4,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class LoginScreen extends AppCompatActivity {
     EditText passwordInput;
     ImageButton togglePwButton;
+    Button loginButton;
+    RelativeLayout passwordLayout;
+
     private boolean isShow = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        passwordInput = findViewById(R.id.passwordInput);
+        passwordInput = findViewById(R.id.password_edit_text);
         togglePwButton = findViewById(R.id.togglePwButton);
+        loginButton = findViewById(R.id.button_login);
+        passwordLayout = findViewById(R.id.password_input);
 
         passwordInput.setTypeface(Typeface.DEFAULT);
-        togglePwButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ToggleShowPw(passwordInput, togglePwButton);
-            }
-        });
+
+        togglePwButton.setOnClickListener(view -> ToggleShowPw(passwordInput, togglePwButton));
+
+        loginButton.setOnClickListener(view -> validateLogin(String.valueOf(passwordInput.getText())));
+
+        passwordInput.setOnClickListener(view -> passwordLayout.setBackground(getDrawable(R.drawable.border_input)));
+
     }
 
     public void ToggleShowPw(EditText passwordInput, ImageButton imageButton) {
@@ -40,6 +48,12 @@ public class LoginScreen extends AppCompatActivity {
         } else {
             passwordInput.setTransformationMethod(null);
             imageButton.setImageResource(R.drawable.eye_open);
+        }
+    }
+
+    public void validateLogin(String password_value) {
+        if (password_value.length() == 0) {
+            passwordLayout.setBackground(getDrawable(R.drawable.input_error));
         }
     }
 }

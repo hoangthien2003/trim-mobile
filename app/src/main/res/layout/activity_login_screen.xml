@@ -18,7 +18,7 @@
             android:text="Welcome Back"
             android:fontFamily="@font/inter_bold"
             android:textColor="@color/black"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:layout_centerHorizontal="true"
             />
         <LinearLayout
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="Email address"
                 android:textColor="@color/label_input"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:layout_marginBottom="5dp"/>
 
             <EditText
@@ -47,10 +47,11 @@
                 android:minHeight="48dp"
                 android:paddingHorizontal="14dp"
                 android:inputType="textNoSuggestions"
-                android:textSize="16dp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/emailLayout"
@@ -61,15 +62,16 @@
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textColor="@color/label_input"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:layout_marginBottom="5dp"/>
 
             <RelativeLayout
+                android:id="@+id/password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_input">
                 <EditText
-                    android:id="@+id/passwordInput"
+                    android:id="@+id/password_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -79,13 +81,13 @@
                     android:paddingHorizontal="14dp"
                     android:inputType="textPassword"
                     android:background="@android:color/transparent"
-                    android:textSize="16dp" />
+                    android:textSize="14sp" />
 
                 <ImageButton
                     android:id="@+id/togglePwButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignRight="@id/passwordInput"
+                    android:layout_alignRight="@id/password_edit_text"
                     android:layout_centerVertical="true"
                     android:background="@android:color/transparent"
                     android:contentDescription="Show Button"
@@ -94,6 +96,111 @@
                     app:srcCompat="@drawable/eye_close" />
             </RelativeLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot your password?"
+            android:textSize="12dp"
+            android:fontFamily="@font/inter_regular"
+            android:layout_marginTop="75dp"
+            android:layout_alignTop="@id/password_layout"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/forgot_password"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/purple_button"
+            android:fontFamily="@font/inter_medium"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="normal" />
+
+        <RelativeLayout
+            android:id="@+id/divider_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/button_login"
+            android:layout_marginTop="60dp"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:background="@color/gray_100" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/white"
+                android:fontFamily="@font/inter_medium"
+                android:text="or"
+                android:textAlignment="center"
+                android:textColor="#757575" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/divider_layout"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/border_input"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="8dp"
+             >
+            <ImageView
+                android:id="@+id/ic_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/google"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:id="@+id/google_text"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:text="Continue with Google"
+                android:textSize="14dp"
+                android:textColor="@color/black_300"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/button_google"
+            android:layout_marginTop="70dp"
+            android:paddingHorizontal="32dp"
+            >
+            <TextView
+                android:id="@+id/suggest_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account?"
+                android:fontFamily="@font/inter_regular"
+                android:textColor="@color/black_400"
+                />
+            <TextView
+                android:id="@+id/sign_up_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="@color/cyan"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
 
     </RelativeLayout>
 </RelativeLayout>
