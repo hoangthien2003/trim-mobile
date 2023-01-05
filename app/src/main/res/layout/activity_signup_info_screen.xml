@@ -4,62 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen">
-
+    tools:context=".SignupInfoScreen">
     <RelativeLayout
+        android:id="@+id/sign_up_layout"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
+
         <TextView
-            android:id="@+id/welcomeText"
+            android:id="@+id/sign_up_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="Sign up"
             android:fontFamily="@font/inter_bold"
             android:textColor="@color/black_200"
             android:textSize="32sp"
             android:layout_centerHorizontal="true"
             />
+
         <LinearLayout
             android:id="@+id/email_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/welcomeText"
-            android:layout_marginTop="100dp"
+            android:layout_alignTop="@id/sign_up_title"
+            android:layout_marginTop="80dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email address"
+                android:text="Enter your full name"
                 android:textColor="@color/label_input"
                 android:textSize="12sp"
                 android:layout_marginBottom="5dp"/>
 
             <EditText
-                android:id="@+id/email_input"
+                android:id="@+id/full_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/border_input"
                 android:fontFamily="@font/inter_regular"
-                android:hint="Email"
+                android:hint="Full name"
                 android:minHeight="48dp"
                 android:paddingHorizontal="14dp"
                 android:inputType="textNoSuggestions"
                 android:textSize="14sp" />
             <TextView
-                android:id="@+id/error_email_text"
+                android:id="@+id/error_full_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email is invalid"
+                android:text="Cannot be blank"
                 android:fontFamily="@font/inter_regular"
                 android:textSize="10sp"
                 android:textColor="@color/red"
                 android:visibility="invisible"
                 />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/password_layout"
             android:layout_width="match_parent"
@@ -115,112 +116,85 @@
                 android:textColor="@color/red"
                 android:visibility="invisible"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password must be 8 characters or longer."
+                android:fontFamily="@font/inter_regular"
+                android:textSize="12sp"
+                />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forgot your password?"
-            android:textSize="12dp"
-            android:fontFamily="@font/inter_regular"
-            android:layout_marginTop="85dp"
-            android:layout_alignTop="@id/password_layout"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_continue"
+        <LinearLayout
+            android:id="@+id/confirm_pw_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/forgot_password"
-            android:layout_marginTop="35dp"
+            android:layout_alignTop="@id/password_layout"
+            android:layout_marginTop="120dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm password"
+                android:textColor="@color/label_input"
+                android:textSize="12sp"
+                android:layout_marginBottom="5dp"/>
+
+            <RelativeLayout
+                android:id="@+id/confirm_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_input">
+                <EditText
+                    android:id="@+id/confirm_pw_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/inter_regular"
+                    android:hint="Confirm password"
+                    android:minHeight="48dp"
+                    android:paddingHorizontal="14dp"
+                    android:inputType="textPassword"
+                    android:background="@android:color/transparent"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/toggle_confirm_pw_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/confirm_pw_edit_text"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Show Button"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:srcCompat="@drawable/eye_close" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/error_confirm_pw_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password does not match!"
+                android:fontFamily="@font/inter_regular"
+                android:textSize="10sp"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sign_up_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/confirm_pw_layout"
+            android:layout_marginTop="95dp"
             android:background="@drawable/purple_button"
             android:fontFamily="@font/inter_medium"
-            android:text="Log in"
+            android:text="Sign up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="normal" />
 
-        <RelativeLayout
-            android:id="@+id/divider_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/button_continue"
-            android:layout_marginTop="60dp"
-            >
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_centerVertical="true"
-                android:background="@color/gray_100" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@color/white"
-                android:fontFamily="@font/inter_medium"
-                android:text="or"
-                android:textAlignment="center"
-                android:textColor="#757575" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/divider_layout"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/border_input"
-            android:paddingHorizontal="50dp"
-            android:paddingVertical="8dp"
-             >
-            <ImageView
-                android:id="@+id/ic_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/google"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                />
-            <TextView
-                android:id="@+id/google_text"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="Continue with Google"
-                android:textSize="14dp"
-                android:textColor="@color/black_300"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/button_google"
-            android:layout_marginTop="70dp"
-            android:paddingHorizontal="32dp"
-            >
-            <TextView
-                android:id="@+id/suggest_acc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Don't have an account?"
-                android:fontFamily="@font/inter_regular"
-                android:textColor="@color/black_400"
-                />
-            <TextView
-                android:id="@+id/sign_up_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign up"
-                android:fontFamily="@font/inter_medium"
-                android:textColor="@color/cyan"
-                android:layout_alignParentRight="true"
-                />
-        </RelativeLayout>
-
     </RelativeLayout>
+
 </RelativeLayout>

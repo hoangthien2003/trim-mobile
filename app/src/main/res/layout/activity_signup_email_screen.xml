@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen">
-
+    tools:context=".SignupEmailScreen">
     <RelativeLayout
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
         <TextView
-            android:id="@+id/welcomeText"
+            android:id="@+id/sign_up_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="Sign Up"
             android:fontFamily="@font/inter_bold"
             android:textColor="@color/black_200"
             android:textSize="32sp"
@@ -25,8 +24,8 @@
             android:id="@+id/email_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/welcomeText"
-            android:layout_marginTop="100dp"
+            android:layout_alignTop="@id/sign_up_title"
+            android:layout_marginTop="80dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -60,82 +59,15 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/password_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/email_layout"
-            android:layout_marginTop="90dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:textColor="@color/label_input"
-                android:textSize="12sp"
-                android:layout_marginBottom="5dp"/>
-
-            <RelativeLayout
-                android:id="@+id/password_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_input">
-                <EditText
-                    android:id="@+id/password_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/inter_regular"
-                    android:hint="Password"
-                    android:minHeight="48dp"
-                    android:paddingHorizontal="14dp"
-                    android:inputType="textPassword"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
-
-                <ImageButton
-                    android:id="@+id/toggle_pw_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignRight="@id/password_edit_text"
-                    android:layout_centerVertical="true"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Show Button"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:srcCompat="@drawable/eye_close" />
-            </RelativeLayout>
-            <TextView
-                android:id="@+id/error_password_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password is incorrect"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="10sp"
-                android:textColor="@color/red"
-                android:visibility="invisible"
-                />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forgot your password?"
-            android:textSize="12dp"
-            android:fontFamily="@font/inter_regular"
-            android:layout_marginTop="85dp"
-            android:layout_alignTop="@id/password_layout"/>
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/forgot_password"
-            android:layout_marginTop="35dp"
+            android:layout_alignTop="@id/email_layout"
+            android:layout_marginTop="95dp"
             android:background="@drawable/purple_button"
             android:fontFamily="@font/inter_medium"
-            android:text="Log in"
+            android:text="Continue"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="17sp"
@@ -174,7 +106,7 @@
             android:background="@drawable/border_input"
             android:paddingHorizontal="50dp"
             android:paddingVertical="8dp"
-             >
+            >
             <ImageView
                 android:id="@+id/ic_google"
                 android:layout_width="wrap_content"
@@ -201,13 +133,13 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/button_google"
             android:layout_marginTop="70dp"
-            android:paddingHorizontal="32dp"
+            android:paddingHorizontal="28dp"
             >
             <TextView
                 android:id="@+id/suggest_acc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account?"
+                android:text="Already have an account?"
                 android:fontFamily="@font/inter_regular"
                 android:textColor="@color/black_400"
                 />
@@ -215,12 +147,12 @@
                 android:id="@+id/sign_up_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign up"
+                android:text="Log in"
                 android:fontFamily="@font/inter_medium"
                 android:textColor="@color/cyan"
                 android:layout_alignParentRight="true"
                 />
         </RelativeLayout>
-
     </RelativeLayout>
+
 </RelativeLayout>
