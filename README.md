@@ -1,2 +1,1 @@
-Trim-Mobile
-The Android App of Trim.
+Trim-Mobile || The Android App of Trim.
