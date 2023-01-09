@@ -1,6 +1,8 @@
 package com.trim;
 
-public class UserInfo {
+import android.app.Application;
+
+public class UserInfo extends Application {
     private String email;
     private String fullName;
     private String password;

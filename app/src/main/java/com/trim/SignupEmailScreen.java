@@ -1,5 +1,7 @@
 package com.trim;
 
+import static com.trim.MyUtils.validateEmail;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,18 +31,18 @@ public class SignupEmailScreen extends AppCompatActivity {
                 errorEmailText.setVisibility(View.VISIBLE);
             } else {
                 String emailValue = String.valueOf(emailInput.getText());
-                Intent intent = new Intent(SignupEmailScreen.this, SignupInfoScreen.class);
-                intent.putExtra("emailSignup", emailValue);
-                startActivity(intent);
+                ((UserInfo) this.getApplication()).setEmail(emailValue);
+                startActivity(new Intent(SignupEmailScreen.this,
+                        VarifyEmailScreen.class));
             }
         });
     }
 
     public boolean isValidEmail(String email_value) {
-        if (email_value.isEmpty()) {
-            return false;
-        } else {
+        if (!email_value.isEmpty() && validateEmail(email_value)) {
             return true;
+        } else {
+            return false;
         }
     }
 }

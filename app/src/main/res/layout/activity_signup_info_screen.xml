@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupInfoScreen">
+    tools:context=".SignupInfoScreen"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
     <RelativeLayout
         android:id="@+id/sign_up_layout"
         android:layout_width="280dp"
@@ -110,7 +112,7 @@
                 android:id="@+id/error_password_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password is incorrect"
+                android:text="Password is invalid"
                 android:fontFamily="@font/inter_regular"
                 android:textSize="10sp"
                 android:textColor="@color/red"
@@ -186,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/confirm_pw_layout"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="115dp"
             android:background="@drawable/purple_button"
             android:fontFamily="@font/inter_medium"
             android:text="Sign up"

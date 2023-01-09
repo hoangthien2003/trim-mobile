@@ -1,13 +1,19 @@
 package com.trim;
 
+import static com.trim.MyUtils.validatePassword;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.Application;
 import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,8 +27,6 @@ public class SignupInfoScreen extends AppCompatActivity {
     TextView errorFullNameText, errorPwText, errorConfirmPwText;
     Button signUpButton;
     RelativeLayout passwordLayout, confirmPwLayout, signUpLayout;
-    UserInfo userInfo = new UserInfo();
-    Bundle emailSignup;
 
     private boolean isPwShow = false, isConfirmPwShow = false, flag;
 
@@ -30,8 +34,6 @@ public class SignupInfoScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_info_screen);
-        emailSignup = getIntent().getBundleExtra("emailSignup");
-        userInfo.setEmail(String.valueOf(emailSignup));
 
         togglePwButton = findViewById(R.id.toggle_pw_button);
         toggleConfirmPwButton = findViewById(R.id.toggle_confirm_pw_button);
@@ -50,6 +52,8 @@ public class SignupInfoScreen extends AppCompatActivity {
             if (hasFocus) {
                 fullNameInput.setBackground(getDrawable(R.drawable.border_input));
                 errorFullNameText.setVisibility(View.INVISIBLE);
+            } else {
+                hideKeyboard(view);
             }
         });
 
@@ -57,6 +61,8 @@ public class SignupInfoScreen extends AppCompatActivity {
             if (hasFocus) {
                 passwordLayout.setBackground(getDrawable(R.drawable.border_input));
                 errorPwText.setVisibility(View.INVISIBLE);
+            } else {
+                hideKeyboard(view);
             }
         });
 
@@ -66,6 +72,7 @@ public class SignupInfoScreen extends AppCompatActivity {
                 confirmPwLayout.setBackground(getDrawable(R.drawable.border_input));
                 errorConfirmPwText.setVisibility(View.INVISIBLE);
             } else {
+                hideKeyboard(view);
                 signUpLayout.setPadding(0,0,0,0);
             }
         });
@@ -85,9 +92,16 @@ public class SignupInfoScreen extends AppCompatActivity {
                     String.valueOf(confirmPwInput.getText())
             );
             if (!flag) {
-                Toast.makeText(this, userInfo.toString(), Toast.LENGTH_SHORT).show();
+                String userInfoString = ((UserInfo) this.getApplication()).toString();
+                Toast.makeText(this, userInfoString, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public boolean isToggleShowPw(EditText passwordInput, ImageButton imageButton, boolean isShow) {
@@ -109,28 +123,22 @@ public class SignupInfoScreen extends AppCompatActivity {
             flag = true;
         } else {
             flag = false;
-            userInfo.setFullName(fullNameValue);
+            ((UserInfo) this.getApplication()).setFullName(fullNameValue);
         }
 
-        if (passwordValue.isEmpty()) {
+        if (passwordValue.isEmpty() || !validatePassword(passwordValue)) {
             passwordLayout.setBackground(getDrawable(R.drawable.input_error));
             errorPwText.setVisibility(View.VISIBLE);
             flag = true;
         } else {
             flag = false;
-            userInfo.setPassword(passwordValue);
+            ((UserInfo) this.getApplication()).setPassword(passwordValue);
         }
 
-        if (confirmPwValue.isEmpty()) {
+        if (confirmPwValue.isEmpty() || !confirmPwValue.equals(passwordValue)) {
             confirmPwLayout.setBackground(getDrawable(R.drawable.input_error));
             errorConfirmPwText.setVisibility(View.VISIBLE);
             flag = true;
         }
-
-//        if (passwordValue != confirmPwValue) {
-//            confirmPwLayout.setBackground(getDrawable(R.drawable.input_error));
-//            errorConfirmPwText.setVisibility(View.VISIBLE);
-//            flag = true;
-//        }
     }
 }
