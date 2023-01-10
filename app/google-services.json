@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1020594166837",
+    "project_id": "trim-mobile",
+    "storage_bucket": "trim-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020594166837:android:aa34d0acf2eb35fd35e57c",
+        "android_client_info": {
+          "package_name": "com.trim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020594166837-nomp8cvabcuusb25b0572bonjo7uh5ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnFxhJnJJTV1JgY0LIuZdbDYAc1Kllo-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020594166837-nomp8cvabcuusb25b0572bonjo7uh5ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

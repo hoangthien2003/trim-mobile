@@ -11,6 +11,7 @@
     <color name="black_400">#46474C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray_100">#E8ECEE</color>
+    <color name="gray_200">#FBFBFB</color>
     <color name="label_input">#848588</color>
     <color name="purple">#5F48EA</color>
     <color name="cyan">#08C7E0</color>
